@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal database</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #a2d4f1, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #444;
+            font-size: 16px;
+        }
+        input[type="file"]:focus, input[type="url"]:focus {
+            outline: none;
+            border-color: #66afe9;
+            box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+        }
+        input[type="file"], input[type="url"] {
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 8px;
+            width: calc(100% - 18px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .add-more {
+            display: none;
+            animation: blinker 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        /* Popup styles */
+        .popup {
+            position: fixed;
+            top: 20px; /* Adjust top position as needed */
+            right: 20px; /* Adjust right position as needed */
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: none;
+        }
+        .popup p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to your Datacollector</h1>
+    <form id="profileForm" enctype="multipart/form-data" action="/submit" method="POST">
+        <label for="resume">Resume:</label>
+        <input type="file" id="resume" name="resume" title="Upload your resume">
+        
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" title="Upload your profile picture">
+        
+        <label for="class10Marksheet">Class 10 Marksheet:</label>
+        <input type="file" id="class10Marksheet" name="class10Marksheet" title="Upload your Class 10 marksheet">
+        
+        <label for="class12Marksheet">Class 12 Marksheet:</label>
+        <input type="file" id="class12Marksheet" name="class12Marksheet" title="Upload your Class 12 marksheet">
+        
+        <label for="graduationMarksheet">Graduation Marksheet:</label>
+        <input type="file" id="graduationMarksheet" name="graduationMarksheet" title="Upload your graduation marksheet">
+        
+        <label for="certificate1">Certificate(s):</label>
+        <input type="file" id="certificate1" name="certificate1" title="Upload your certificate">
+        <input type="file" id="certificate2" name="certificate2" title="Upload another certificate" style="display: none;">
+        <input type="file" id="certificate3" name="certificate3" title="Upload another certificate" style="display: none;">
+        <span class="add-more">Add More</span>
+        
+        <label for="linkedinLink">LinkedIn Profile:</label>
+        <input type="url" id="linkedinLink" name="linkedinLink" placeholder="Enter your LinkedIn profile URL" title="Enter your LinkedIn profile URL">
+        
+        <label for="githubLink">GitHub Profile:</label>
+        <input type="url" id="githubLink" name="githubLink" placeholder="Enter your GitHub profile URL" title="Enter your GitHub profile URL">
+        
+        <button type="submit" onclick="showPopup()">Submit</button>
+    </form>
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <p>Your data has been submitted successfully!</p>
+</div>
+
+<script>
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+        setTimeout(hidePopup, 20000); // Hide popup after 20 seconds
+    }
+
+    function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+
+</body>
+</html>

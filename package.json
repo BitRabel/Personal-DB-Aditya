@@ -1,0 +1,22 @@
+{
+  "name": "profile-upload",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "start-server": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.10.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0"
+  },
+  "description": ""
+}
